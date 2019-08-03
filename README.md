@@ -1,8 +1,17 @@
-### A WebDAV server supporting private and shared folders [![Build Status](https://travis-ci.org/gfiedler/docker-webdav.svg?branch=master)](https://travis-ci.org/gfiedler/docker-webdav)
+### A WebDAV server supporting private and shared folders
 
-Start the server with:
+Forked from [gfiedler/docker-webdav](https://github.com/gfiedler/docker-webdav) to serve a local directory on the host, rather than a volume
 
-    docker run -d -p 80:80 --name webdav sftech/webdav
+Build the server with:
+``docker build -t webdav .`` inside this repository.  
+After that, start the server with:
+```
+docker run -d \
+  --name webdav \
+  -v "$FILEDIR":/media/htdocs \
+  -v "$CONFDIR":/media/conf.d \
+  webdav
+```
 
 A private folder can be added to the container with:
 

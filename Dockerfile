@@ -1,5 +1,5 @@
 FROM httpd
-MAINTAINER Gerald Fiedler <gfiedler@sftech.de>
+MAINTAINER Frederic98
 
 COPY adduser addgroup deluser delgroup import export /usr/local/bin/
 COPY httpd.conf $HTTPD_PREFIX/conf/
