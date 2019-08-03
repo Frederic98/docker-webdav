@@ -2,15 +2,21 @@
 
 Forked from [gfiedler/docker-webdav](https://github.com/gfiedler/docker-webdav) to serve a local directory on the host, rather than a volume
 
-Build the server with:
-``docker build -t webdav .`` inside this repository.  
-After that, start the server with:
+Prepare the host filesystem:
+```
+FILEDIR="/media/webdav"
+CONFDIR="/media/.webdav_config"
+mkdir -p $FILEDIR/user
+mkdir -p $CONFDIR
+touch ${CONFDIR}/passwd
+```
+Start the server with:
 ```
 docker run -d \
   --name webdav \
   -v "$FILEDIR":/media/htdocs \
   -v "$CONFDIR":/media/conf.d \
-  webdav
+  frederic98/webdav
 ```
 
 A private folder can be added to the container with:
